@@ -10,10 +10,12 @@ botToken = input('Digite o seu Token Discord: ')
 
 async def load(bot):
     try:
+        await bot.load_extension('manager')
+        
         for file in listdir('commands'):
             if file.endswith('.py'):
                 cog = file[:-3]
-                await bot.load_extensions(f'commands.{cog}')
+                await bot.load_extension(f'commands.{cog}')
     except:
         print(f'Não foi possivel carregar os cogs: {traceback.format_exc()}')
 
