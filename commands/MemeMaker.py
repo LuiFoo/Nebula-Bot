@@ -39,7 +39,7 @@ class MemeMaker(commands.Cog):
                 if j > limite:
                     a += 1
             
-            
+                #Selecionar e editar a imagem
             img = Image.open('images/urso-albino.jpg')
             
             dafont = ImageFont.truetype('fonts/insanibu.ttf', 50)
@@ -49,10 +49,11 @@ class MemeMaker(commands.Cog):
             
             img.save('images/img-save/urso-albino-edit.jpg')
             
+                #Enviar para o chat do Discord
             await interaction.followup.send(file = File('images/img-save/urso-albino-edit.jpg'))
             
         except:
-            
+                #Caso algo não funcione, o terminal vai mostrar o erro, e o usuário recebe uma mensagem de erro no chat.
             print(f'Não foi possivel carregar imagem: {traceback.format_exc()}')
             await interaction.followup.send('Deu errado essa bagaça ;-;')
         
