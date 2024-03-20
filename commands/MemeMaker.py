@@ -9,16 +9,43 @@ class MemeMaker(commands.Cog):
         
     @app_commands.command(name = 'meme', description = '[Info] Criador de Meme')
     @app_commands.checks.cooldown(1,2, key = lambda i: (i.user.id))
-    async def on_ping(self, interaction: Interaction, texto: str):
+    async def on_ping(self, interaction: Interaction, texto: str = None):  #Quando colocamos "= None" depois do texto, significa que essa condição é opcional
         try:
+                #pedir para o discord dar um tempinho pro bot pensar
             await interaction.response.defer()
+            
+            
+                #Checar se o usuário não colocou texto, para assim, colocar um padrão
+            if texto is None:
+                texto = "Lorem Ipsum Dolor Sit Amet"
+                
+            
+                #Checar se o texto é muito grande, se sim, fatie-o
+            texto.strip()
+
+            j = 0
+            limite = 15
+            a = 0
+                        
+            for i in texto:
+                j += 1
+                
+                if j > limite and i == ' ':
+                    texto = texto[:j] + "\n" + texto[j:]
+                                
+                    limite += a + 10
+                    a = 0
+                    
+                if j > limite:
+                    a += 1
+            
             
             img = Image.open('images/urso-albino.jpg')
             
             dafont = ImageFont.truetype('fonts/insanibu.ttf', 50)
             
             draw = ImageDraw.Draw(img)
-            draw.text((490, 90), texto, font = dafont, fill = (255, 255, 255), stroke_width = 2, stroke_fill = (0, 0, 0))
+            draw.text((200, 10), texto, font = dafont, fill = (255, 255, 255), stroke_width = 2, stroke_fill = (0, 0, 0))
             
             img.save('images/img-save/urso-albino-edit.jpg')
             
