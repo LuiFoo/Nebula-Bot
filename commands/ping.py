@@ -1,5 +1,4 @@
-from discord import Interaction, Embed, app_commands
-from discord.ext import commands
+from imports import *
 
 class ping(commands.Cog):
     def __init__(self, bot):
@@ -12,7 +11,7 @@ class ping(commands.Cog):
         botping = str(self.bot.latency)
         botping = botping[:4]
         
-        await interaction.response.send_message(f'🏓 Pong! {botping}')
+        await interaction.response.send_message(f'🛜 Ping! \n Ping está em {botping}')
 
 async def setup(bot):
     await bot.add_cog(ping(bot))

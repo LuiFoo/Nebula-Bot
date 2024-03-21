@@ -1,7 +1,4 @@
-from discord import app_commands, Interaction, File
-from discord.ext import commands
-from PIL import Image, ImageDraw, ImageFont
-import traceback
+from imports import *
 
 class MemeMaker(commands.Cog):
     def __init__(self, bot):
