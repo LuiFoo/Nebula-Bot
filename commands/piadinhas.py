@@ -8,6 +8,7 @@ class piadinhas(commands.Cog):
     @app_commands.checks.cooldown(1,2, key = lambda i: (i.user.id))
     async def on_ping(self, interaction: Interaction): 
         try:
+            
             #pedir para o discord dar um tempinho pro bot pensar
             await interaction.response.defer()
              
@@ -16,7 +17,8 @@ class piadinhas(commands.Cog):
             await interaction.followup.send(f'Tá preparado para a piada? {linesep} {choice(Piads)}')
                      
         except:
-                #Caso algo não funcione, o terminal vai mostrar o erro, e o usuário recebe uma mensagem de erro no chat.
+                
+            #Caso algo não funcione, o terminal vai mostrar o erro, e o usuário recebe uma mensagem de erro no chat.
             print(traceback.format_exc())
             await interaction.followup.send('Deu errado essa bagaça ;-;')
         
