@@ -1,12 +1,13 @@
 from discord.ext.commands import Bot
+from dotenv import load_dotenv
+from os import listdir, getenv
 from discord import Intents
-from os import listdir
 from asyncio import run
 import traceback
 
-bot = Bot(command_prefix = '!', intents = Intents.all(), help_command = None)
+load_dotenv()
 
-botToken = input('Digite o seu Token Discord: ')
+bot = Bot(command_prefix = '!', intents = Intents.all(), help_command = None)
 
 async def load(bot):
     try:
@@ -20,7 +21,8 @@ async def load(bot):
         print(f'Não foi possivel carregar os cogs: {traceback.format_exc()}')
 
 async def main():
+    Token = getenv("TOKEN")
     await load(bot)
-    await bot.start(botToken)
+    await bot.start(Token)
     
 run(main())
