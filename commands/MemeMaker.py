@@ -1,6 +1,6 @@
 from imports import *
 
-class MemeMaker(commands.Cog):
+class mememaker(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
@@ -56,4 +56,4 @@ class MemeMaker(commands.Cog):
         
         
 async def setup(bot):
-    await bot.add_cog(MemeMaker(bot))
+    await bot.add_cog(mememaker(bot))
